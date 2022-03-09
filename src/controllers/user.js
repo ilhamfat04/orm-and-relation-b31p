@@ -1,5 +1,5 @@
 // import profile model
-const { user } = require("../../models");
+const { user, profile } = require("../../models");
 
 exports.addUsers = async (req, res) => {
   try {
@@ -51,6 +51,13 @@ exports.getUser = async (req, res) => {
         id,
       },
       // code here
+      include: {
+        model: profile,
+        as: "profile",
+        attributes: {
+          exclude: ["idUser", "createdAt", "updatedAt"],
+        }
+      },
       attributes: {
         exclude: ["password", "createdAt", "updatedAt"],
       },
