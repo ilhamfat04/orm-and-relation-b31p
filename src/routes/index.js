@@ -5,7 +5,7 @@ const router = express.Router();
 // Controller
 const { addUsers, getUsers, getUser, updateUser, deleteUser } = require("../controllers/user");
 // import controller function here
-
+const { getProduct, addProduct } = require('../controllers/product')
 // Route
 router.post("/user", addUsers);
 router.get("/users", getUsers);
@@ -14,5 +14,7 @@ router.patch("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
 
 // add route here
+router.post("/product", addProduct);
+router.get('/products', getProduct)
 
 module.exports = router;
